@@ -95,7 +95,7 @@ def find_max(weather_data):
 # Args: weather_data: A list of numbers.Returns:The maximum value and it's position in the list.
 
 
-# Outputs a summary for the given weather data.
+# DONE Outputs a summary for the given weather data.
 def generate_summary(weather_data):
     dates = [data[0] for data in weather_data] 
     minimum_temperatures =[data[1] for data in weather_data]
@@ -111,14 +111,24 @@ def generate_summary(weather_data):
             f"  The highest temperature will be {format_temperature(convert_f_to_c(max_temp))}, and will occur on {convert_date(max_date)}.\n"
             f"  The average low this week is {format_temperature(convert_f_to_c(average_min))}.\n"
             f"  The average high this week is {format_temperature(convert_f_to_c(average_max))}.\n")
-
 # Args: weather_data: A list of lists, each sublist represents a day of weather data.
 # Returns: string containing the summary information.
 
 
 
 # Outputs a daily summary for the given weather data.
-# # def generate_daily_summary(weather_data):
+def generate_daily_summary(weather_data):
+    x = []
+    dates = [data[0] for data in weather_data] 
+    min_temp =[data[1] for data in weather_data]
+    max_temp = [data[2] for data in weather_data]
+    mini_temperature, index = find_min(min_temp)
+    maxi_temperature, index = find_max(max_temp)
+    for index in range(len(dates)):
+        x.append(f"---- {dates} ----\n"
+           f"  Minimum Temperature: {format_temperature(convert_f_to_c(mini_temperature))}\n"
+           f"  Maximum Temperature: {format_temperature(convert_f_to_c(maxi_temperature))}\n")
+    return x 
 
 # Args: weather_data: list of lists, where each sublist represents a day of weather data.
 # Returns: A string containing the summary information.
